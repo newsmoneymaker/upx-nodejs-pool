@@ -1,0 +1,17 @@
+[Unit]
+Description=uPlexa pool: charts data collector (hash rate, difficulty, miners, workers on the home page)
+After=upx-pool-redis.service upx-pool-api.service
+Requires=upx-pool-redis.service
+[Service]
+Type=simple
+User=upxpool
+WorkingDirectory=/opt/upx-nodejs-pool
+ExecStart=/usr/bin/node /opt/upx-nodejs-pool/init.js -module=chartsDataCollector
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

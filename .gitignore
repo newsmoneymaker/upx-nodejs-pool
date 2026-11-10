@@ -1,0 +1,9 @@
+WALLET_BACKUP_*.txt
+node_modules/
+logs/
+config.json
+STOP_PAYMENTS
+*.log
+hasher/upxhash
+hasher/*.o
+hasher/upx-src/**/*.o

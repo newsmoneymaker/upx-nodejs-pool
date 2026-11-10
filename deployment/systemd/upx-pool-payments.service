@@ -1,0 +1,17 @@
+[Unit]
+Description=uPlexa pool: payment processor (sendmany from the pool wallet; emergency brake: deployment/pause-payments.sh)
+After=upx-pool-redis.service upx-node.service upx-wallet-rpc.service
+Requires=upx-pool-redis.service
+[Service]
+Type=simple
+User=upxpool
+WorkingDirectory=/opt/upx-nodejs-pool
+ExecStart=/usr/bin/node /opt/upx-nodejs-pool/init.js -module=payments
+Restart=always
+RestartSec=15
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
